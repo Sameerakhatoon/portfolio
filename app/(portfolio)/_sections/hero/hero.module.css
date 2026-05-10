@@ -1,0 +1,67 @@
+.section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100dvh;
+  overflow: hidden;
+  padding: var(--safe);
+}
+
+.content {
+  position: relative;
+  z-index: var(--z-content);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: calc(((16 * 100) / var(--device-width)) * 1vw);
+}
+
+.name {
+  composes: heading-xl from global;
+  text-transform: uppercase;
+  color: var(--color-contrast);
+}
+
+.role {
+  composes: body-lg from global;
+  color: var(--color-secondary);
+  opacity: 0.7;
+}
+
+.scrollIndicator {
+  position: absolute;
+  bottom: calc(((40 * 100) / var(--device-width)) * 1vw);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-secondary);
+  opacity: 0.4;
+}
+
+.scrollLine {
+  width: 1px;
+  height: 40px;
+  background: var(--color-secondary);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: scaleY(0.5);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+.scrollText {
+  composes: label from global;
+  text-transform: uppercase;
+}

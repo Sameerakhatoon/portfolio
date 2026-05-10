@@ -1,0 +1,87 @@
+.section {
+  position: relative;
+  z-index: var(--z-content);
+  padding: calc(((160 * 100) / var(--device-width)) * 1vw) var(--safe);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  @media (--mobile) {
+    padding-top: calc(((100 * 100) / var(--device-width)) * 1vw);
+    padding-bottom: calc(((100 * 100) / var(--device-width)) * 1vw);
+  }
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--color-contrast) 50%,
+    transparent 100%
+  );
+  margin-bottom: calc(((80 * 100) / var(--device-width)) * 1vw);
+}
+
+.heading {
+  composes: heading-lg from global;
+  color: var(--color-secondary);
+  margin-bottom: calc(((16 * 100) / var(--device-width)) * 1vw);
+}
+
+.subtext {
+  composes: body-lg from global;
+  color: var(--color-secondary);
+  opacity: 0.6;
+  margin-bottom: calc(((48 * 100) / var(--device-width)) * 1vw);
+  max-width: 480px;
+}
+
+.links {
+  display: flex;
+  /* Static fallback — the prior `calc(.. / var(--device-width) * 1vw)`
+     collapsed to 0 when the variable wasn't resolving, cramming the
+     items together. */
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  @media (--desktop) {
+    gap: 2.5rem;
+  }
+}
+
+.link {
+  composes: label from global;
+  display: inline-flex;
+  align-items: center;
+  text-transform: uppercase;
+  color: var(--color-contrast);
+  padding: 12px 24px;
+  border: 1px solid rgba(200, 169, 126, 0.3);
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease;
+
+  @media (--hover) {
+    &:hover {
+      background-color: rgba(200, 169, 126, 0.1);
+      border-color: var(--color-contrast);
+    }
+  }
+}
+
+.email {
+  composes: heading-md from global;
+  color: var(--color-contrast);
+  margin-bottom: calc(((40 * 100) / var(--device-width)) * 1vw);
+  transition: opacity 0.3s ease;
+
+  @media (--hover) {
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}
